@@ -29,6 +29,8 @@ public class SimpleAndroidTest {
         ds.setCapability(PLATFORM_VERSION,"11.0");
         ds.setCapability(APP_PACKAGE, "ru.russpass.tourist.dev");
         ds.setCapability(APP_ACTIVITY, "ru.russpass.tourist.ui.activity.ApplicationActivity");
+        ds.setCapability("unicodeKeyboard", "true");
+        ds.setCapability("resetKeyboard", "true");
 
         AndroidDriver ad = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), ds);
 
@@ -39,12 +41,15 @@ public class SimpleAndroidTest {
         ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         MobileElement el3 = (MobileElement) ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/androidx.compose.ui.platform.ComposeView[1]/android.view.View/android.view.View[2]/android.widget.Button");
         el3.click();
-        MobileElement el5 = (MobileElement) ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.TextView");
-        el5.click();
-        el5.sendKeys("russ_test@ro.ru");
-        MobileElement el10 = (MobileElement) ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.TextView");
-        el10.click();
-        el10.sendKeys("Test1234!");
+        MobileElement email = (MobileElement) ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.TextView");
+        email.click();
+        ad.getKeyboard().sendKeys("russ_test@ro.ru");
+        //email.sendKeys("russ_test@ro.ru");
+        ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        MobileElement pass = (MobileElement) ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.TextView");
+        pass.click();
+        ad.getKeyboard().sendKeys("Test1234!");
+        //pass.sendKeys("Test1234!");
         MobileElement el12 = (MobileElement) ad.findElementById("ru.russpass.tourist.dev:id/btnAuth");
         el12.click();
 
